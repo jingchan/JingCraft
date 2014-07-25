@@ -8,6 +8,6 @@ int main(){
 	testPrint("asdf");
 	Render rend;
 	Render rend2 = rend;
-
+	std::cout << std::endl;
 	return 0;
 }

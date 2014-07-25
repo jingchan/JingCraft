@@ -1,5 +1,9 @@
+#ifndef __jc_renderer
+#define __jc_renderer
+
 #include <string>
 #include "world.h"
+
 void testPrint(std::string str = "");
 
 class Render {
@@ -11,3 +15,5 @@ public:
 
 	RenderWorld(World&)
 };
+
+#endif
