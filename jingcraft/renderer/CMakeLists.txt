@@ -12,6 +12,11 @@ set(RENDERER_SRCS
 # include_directories("${PROJECT_BINARY_DIR}")
 # include_directories("${PROJECT_INCLUDE_DIR}")
 
+# GLM
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
+find_package(GLM REQUIRED)
+include_directories(${GLM_INCLUDE_DIR})
+
 # add_library(${PROJECT_NAME} SHARED ${RENDERER_SRCS})
 add_library(${PROJECT_NAME} ${RENDERER_SRCS})
 

@@ -11,17 +11,16 @@
 #include "SDL/SDL.h"
 #include "SDL/SDL_opengl.h"
 
+#include "glm/glm.hpp"
 using namespace std;
 
 void CreateSDL();
 
-int main(){
+int main(int argc, char **argv){
 	cout << "Hello World" << endl;
 	testPrint("asdf");
 	testPrint2("asdf");
-	Render rend;
-	Render rend2 = rend;
-	std::cout << std::endl;
+	Renderer rend;
 
 	World world;
 	world.print();
@@ -84,8 +83,8 @@ void CreateSDL(){
     /* Request opengl 3.2 context.
      * SDL doesn't have the ability to choose which profile at this time of writing,
      * but it should default to the core profile */
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
+    // SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+    // SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
 
     /* Let's get some video information. */
     // info = SDL_GetVideoInfo( );
@@ -143,50 +142,12 @@ void CreateSDL(){
 
     glClearColor(1.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
+    SDL_GL_SwapBuffers();
 
 #ifndef __EMSCRIPTEN__
     // Wait for 3 seconds to give us a chance to see the image
     SDL_Delay(3000);
 #endif
     printf("success");
-
-    // SDL_Quit();
-    /*
-     * We want to request that SDL provide us
-     * with an OpenGL window, in a fullscreen
-     * video mode.
-     *
-     * EXERCISE:
-     * Make starting windowed an option, and
-     * handle the resize events properly with
-     * glViewport.
-     */
-    // flags = SDL_OPENGL | SDL_FULLSCREEN;
-
-/* Create our window centered at 512x512 resolution */
-  //   SDL_Window *mainwindow = SDL_CreateWindow("PROGRAM_NAME", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-  //       512, 512, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
-  //   if(mainwindow == 0){
-		// fprintf( stderr, "Create Window failed: %s\n", SDL_GetError( ) );
-  //   } else {
-  //       printf("Success");	
-  //   }
-
-    // /*
-    //  * Set the video mode
-    //  */
-    // if( SDL_SetVideoMode( width, height, bpp, flags ) == 0 ) {
-         
-    //      * This could happen for a variety of reasons,
-    //      * including DISPLAY not being set, the specified
-    //      * resolution not being available, etc.
-         
-    //     fprintf( stderr, "Video mode set failed: %s\n",
-    //          SDL_GetError( ) );
-
-    //     SDL_Quit();
-        
-    // }
-
-
+    
 }

@@ -8,12 +8,12 @@ void testPrint(std::string str){
 	std::cout << str << std::endl;
 }
 
-Render::Render(){
+Renderer::Renderer(){
 	cout << "Constructor" << endl;
 }
-Render::Render(const Render &rhs){
+Renderer::Renderer(const Renderer &rhs){
 	cout << "Copy Constructor" << endl;
 }
-Render::~Render(){
+Renderer::~Renderer(){
 	cout << "Destructor" << endl;
 }
