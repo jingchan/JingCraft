@@ -5,6 +5,8 @@
 
 class World {
 	std::string testString;
+public:
+	void print();
 };
 
 #endif

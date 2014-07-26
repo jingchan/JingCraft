@@ -2,9 +2,11 @@
 #define __jc_renderer
 
 #include <string>
-#include "world.h"
+
+class World;
 
 void testPrint(std::string str = "");
+void testPrint2(std::string str = "");
 
 class Render {
 	std::string testString;
@@ -13,7 +15,7 @@ public:
 	Render(const Render &rhs);
 	~Render();
 
-	RenderWorld(World&)
+	void RenderWorld(World&);
 };
 
 #endif
