@@ -7,8 +7,6 @@
 
 #include "render_types.h"
 
-#include "glm/glm.hpp"
-
 class World;
 
 void testPrint(std::string str = "");

@@ -5,11 +5,12 @@
 #ifdef __APPLE__
 #include <OpenGL/gl.h>
 #else
+#include <windows.h>
 #include <GL/gl.h>
 #endif
 
-#include "SDL/SDL.h"
-#include "SDL/SDL_opengl.h"
+#include "SDL.h"
+#include "SDL_opengl.h"
 
 #include "glm/glm.hpp"
 using namespace std;
