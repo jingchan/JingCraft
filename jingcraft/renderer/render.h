@@ -23,12 +23,4 @@ public:
 	void RenderWorld(World&);
 
 };
-
-class RenderState {
-	std::vector<std::shared_ptr<vec3> > data;
-	
-
-
-};
-
 #endif

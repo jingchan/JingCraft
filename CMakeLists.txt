@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 # Replace this with a cmake client variable
-set(JC_EMSCRIPTEN NO)
+set(JC_EMSCRIPTEN YES)
 
 
 if (JC_EMSCRIPTEN)
 # Set up emscripten toolchain
 	message("Emscripten Build")
 	set(EMSCRIPTEN_BUILD 1)
-#	set(EMSCRIPTEN_DIR /Users/jingchan/Code/Other/emsdk/emscripten/1.21.0)
-	set(EMSCRIPTEN_DIR $ENV{EMSCRIPTEN})
+	set(EMSCRIPTEN_DIR /Users/jingchan/Code/Other/emsdk/emscripten/1.21.0)
+#	set(EMSCRIPTEN_DIR $ENV{EMSCRIPTEN})
 	set(CMAKE_C_COMPILER   ${EMSCRIPTEN_DIR}/emcc)
 	set(CMAKE_CXX_COMPILER ${EMSCRIPTEN_DIR}/emcc)
 	set(CMAKE_C_FLAGS "-O0 -g -DDEBUG -DEMSCRIPTEN")

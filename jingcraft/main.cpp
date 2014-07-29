@@ -2,12 +2,17 @@
 #include "renderer/render.h"
 #include "world/world.h"
 
+#ifdef WIN32
+#include <windows.h>
+#endif
+
 #ifdef __APPLE__
 #include <OpenGL/gl.h>
 #else
-#include <windows.h>
 #include <GL/gl.h>
 #endif
+
+
 
 #include "SDL.h"
 #include "SDL_opengl.h"
@@ -59,6 +64,36 @@ int main(int argc, char **argv){
 	// SDL_Quit();
 	CreateSDL();
 
+    // Main Loop
+  bool running = true;
+  SDL_Event event;
+  Uint32 frametime;
+
+  while (running)
+  {
+
+    frametime = SDL_GetTicks ();
+
+    while (SDL_PollEvent (&event) != 0)
+    {
+      switch (event.type)
+      {
+        case SDL_KEYDOWN: if (event.key.keysym.sym == SDLK_ESCAPE)
+                            running = false;
+                          break;
+      }
+    }
+
+    // if (SDL_GetTicks () - frametime < minframetime)
+    //   SDL_Delay (minframetime - (SDL_GetTicks () - frametime));
+    float x = (float)rand()/RAND_MAX;
+    glClearColor(1.0, 0.0, 0.0, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT);
+    SDL_GL_SwapBuffers();
+    // printf("%d\n", frametime);
+
+  }
+    
 	return 0;
 }
 
@@ -140,15 +175,4 @@ void CreateSDL(){
         printf("Unable to set video mode: %s\n", SDL_GetError());
         SDL_Quit();
     }
-
-    glClearColor(1.0, 0.0, 0.0, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT);
-    SDL_GL_SwapBuffers();
-
-#ifndef __EMSCRIPTEN__
-    // Wait for 3 seconds to give us a chance to see the image
-    SDL_Delay(3000);
-#endif
-    printf("success");
-    
 }
